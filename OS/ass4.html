@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+</head>
+<body>
+    <p>
+        <h3>Question 1 :
+            Write a program to simulate non-Pre-emptive Shortest Job First (SJF) CPU
+            scheduling algorithm. Accept the number of Processes and arrival time and CPU
+            burst time for each process as input. The output should generate a Gantt chart,
+            turnaround time and waiting time for each process. Also display the average
+            turnaround time and average waiting time.</h3>
+        <div style="background-color:rgb(248, 248, 109); width:50%; border-radius:10px; margin:auto; padding:10px">
+            <code>
+                #include&lt;stdio.h&gt;<br>
+int main()<br>
+{<br>
+int bt[20],p[20],wt[20],tat[20],i,j,n,total=0,pos,temp;<br>
+float avg_wt,avg_tat;<br>
+printf(&quot;Enter number of process:&quot;);<br>
+scanf(&quot;%d&quot;,&amp;n);<br>
+printf(&quot;nEnter Burst Time:n&quot;);<br>
+for(i=0;i&lt;n;i++)<br>
+{<br>
+printf(&quot;p%d:&quot;,i+1);<br>
+scanf(&quot;%d&quot;,&amp;bt[i]);<br>
+p[i]=i+1;<br>
+}<br>
+//sorting of burst times<br>
+for(i=0;i&lt;n;i++)<br>
+{<br>
+pos=i;<br>
+for(j=i+1;j&lt;n;j++)<br>
+{<br>
+if(bt[j]&lt;bt[pos])<br>
+pos=j;<br>
+}<br>
+temp=bt[i];<br>
+bt[i]=bt[pos];<br>
+bt[pos]=temp;<br>
+temp=p[i];<br>
+p[i]=p[pos];<br>
+p[pos]=temp;<br>
+}<br>
+wt[0]=0;<br>
+for(i=1;i&lt;n;i++)<br>
+{<br>
+wt[i]=0;<br>
+for(j=0;j&lt;i;j++)<br>
+wt[i]+=bt[j];<br>
+total+=wt[i];<br>
+}<br>
+avg_wt=(float)total/n;<br>
+total=0;<br>
+<br>
+printf(&quot;nProcesst Burst Time tWaiting TimetTurnaround Time&quot;);<br>
+for(i=0;i&lt;n;i++)<br>
+{<br>
+tat[i]=bt[i]+wt[i];<br>
+total+=tat[i];<br>
+printf(&quot;np%dtt %dtt %dttt%d&quot;,p[i],bt[i],wt[i],tat[i]);<br>
+}<br>
+avg_tat=(float)total/n;<br>
+printf(&quot;nnAverage Waiting Time=%f&quot;,avg_wt);<br>
+printf(&quot;nAverage Turnaround Time=%fn&quot;,avg_tat);<br>
+}<br>
+            </code>
+        </div>
+    </p>
+
+    <p>
+        <h3>Question 2.
+            Write a program to simulate round robin CPU scheduling algorithm. Accept the
+            number of Processes and arrival time, CPU burst time For Round robin, consider
+            time slice is 5 units.</h3>
+        <div style="background-color:rgb(248, 248, 109); width:50%; border-radius:10px; margin:auto; padding:10px">
+            <code>
+                /* Round Robin Scheduling Program in C */<br>
+#include&lt;stdio.h&gt;<br>
+int main()<br>
+{<br>
+//Input no of processed<br>
+int n;<br>
+printf(&quot;Enter Total Number of Processes:&quot;);<br>
+scanf(&quot;%d&quot;, &amp;n);<br>
+int wait_time = 0, ta_time = 0, arr_time[n], burst_time[n], temp_burst_time[n];<br>
+int x = n;<br>
+//Input details of processes<br>
+for(int i = 0; i &lt; n; i++)<br>
+{<br>
+printf(&quot;Enter Details of Process %d \n&quot;, i + 1);<br>
+printf(&quot;Arrival Time: &quot;);<br>
+scanf(&quot;%d&quot;, &amp;arr_time[i]);<br>
+printf(&quot;Burst Time: &quot;);<br>
+scanf(&quot;%d&quot;, &amp;burst_time[i]);<br>
+temp_burst_time[i] = burst_time[i];<br>
+}<br>
+//Input time slot<br>
+int time_slot;<br>
+printf(&quot;Enter Time Slot:&quot;);<br>
+scanf(&quot;%d&quot;, &amp;time_slot);<br>
+//Total indicates total time<br>
+//counter indicates which process is executed<br>
+int total = 0, counter = 0,i;<br>
+printf(&quot;Process ID Burst Time Turnaround Time Waiting Time\n&quot;);<br>
+for(total=0, i = 0; x!=0; )<br>
+{<br>
+// define the conditions<br>
+if(temp_burst_time[i] &lt;= time_slot &amp;&amp; temp_burst_time[i] &gt; 0)<br>
+{<br>
+total = total + temp_burst_time[i];<br>
+temp_burst_time[i] = 0;<br>
+counter=1;<br>
+}<br>
+else if(temp_burst_time[i] &gt; 0)<br>
+{<br>
+temp_burst_time[i] = temp_burst_time[i] - time_slot;<br>
+total += time_slot;<br>
+<br>
+}<br>
+if(temp_burst_time[i]==0 &amp;&amp; counter==1)<br>
+{<br>
+x--; //decrement the process no.<br>
+printf(&quot;\nProcess No %d \t\t %d\t\t\t\t %d\t\t\t %d&quot;, i+1, burst_time[i],<br>
+total-arr_time[i], total-arr_time[i]-burst_time[i]);<br>
+wait_time = wait_time+total-arr_time[i]-burst_time[i];<br>
+ta_time += total -arr_time[i];<br>
+counter =0;<br>
+}<br>
+if(i==n-1)<br>
+{<br>
+i=0;<br>
+}<br>
+else if(arr_time[i+1]&lt;=total)<br>
+{<br>
+i++;<br>
+}<br>
+else<br>
+{<br>
+i=0;<br>
+}<br>
+}<br>
+float average_wait_time = wait_time * 1.0 / n;<br>
+float average_turnaround_time = ta_time * 1.0 / n;<br>
+printf(&quot;\nAverage Waiting Time:%f&quot;, average_wait_time);<br>
+printf(&quot;\nAvg Turnaround Time:%f&quot;, average_turnaround_time);<br>
+return 0;<br>
+}<br>
+            </code> 
+        </div>
+    </p>
+</body>
+</html>

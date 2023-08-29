@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+<body>
+    <p>
+        <h3>1. Write a Java program to print the sum of elements of the array. Also display array
+            elements in ascending order.</h3>
+        <div style="background-color:rgb(248, 248, 109); width:50%; border-radius:10px; margin:auto; padding:10px">
+        <code>
+            import java.util.*;<br><br>
+
+class SumDemo {<br>
+    Scanner s = new Scanner(System.in);<br>
+    int arr[];<br>
+    int n;<br><br>
+
+    void accept() {<br>
+        System.out.println("Enter the number of integers: ");<br>
+        n = s.nextInt();<br>
+        arr = new int[n]; // initialized the array<br>
+        System.out.println("Enter the actual numbers: ");<br>
+        for (int i = 0; i < n; i++) {<br>
+            arr[i] = s.nextInt();<br>
+        }<br>
+        s.close();<br>
+    }<br><br>
+
+    void sortSum() {<br>
+        int sum = 0;<br>
+        System.out.println("Array in ascending order: ");<br>
+        for (int i = 0; i < arr.length; i++) {<br>
+            for (int j = i + 1; j < arr.length; j++) {<br>
+                int temp = 0;<br>
+                if (arr[j] < arr[i]) {<br>
+                    temp = arr[i];<br>
+                    arr[i] = arr[j];<br>
+                    arr[j] = temp;<br>
+                }<br>
+            }<br>
+            System.out.print(arr[i] + " ");<br>
+            sum += arr[i];<br>
+        }<br>
+        System.out.println("\nSum of above elements :" + sum);<br>
+    }<br>
+}<br><br>
+
+class Sum1 {<br>
+    public static void main(String[] args) {<br>
+        SumDemo s1 = new SumDemo();<br>
+        s1.accept();<br>
+        s1.sortSum();<br>
+    }<br>
+}<br>
+        </code></div>
+    </p>
+    <p>
+        <h3>2. Write a Java program create class as MyDate with dd,mm,yy as data members. Write
+            default and parameterized constructor. Display the date in dd-mm-yy format.(Use this
+            keyword)</h3>
+        <div style="background-color:rgb(248, 248, 109); width:50%; border-radius:10px; margin:auto; padding:10px">
+            <code>
+                class MyDate {<br>
+                    int dd,mm,yy;<br>
+                    MyDate(){<br>
+                        dd=0;<br>
+                        mm=0;<br>
+                        yy=0;<br>
+                    }<br>
+                    MyDate(int dd,int mm,int yy){<br>
+                        this.dd=dd;<br>
+                        this.mm=mm;<br>
+                        this.yy=yy;<br>
+                    }<br>
+                    void display(){<br>
+                        System.out.println(dd+"/"+mm+"/"+yy);<br>
+                    }<br>
+                }<br><br>
+                
+                class DateCall{<br>
+                    public static void main(String[] args) {<br>
+                        MyDate d1= new MyDate();<br>
+                        d1.display();<br>
+                        MyDate d2=new MyDate(11,12,23);<br>
+                        d2.display();<br>
+                    }<br>
+                }<br>
+            </code>
+        </div>
+    </p>
+</body>
+</html>
