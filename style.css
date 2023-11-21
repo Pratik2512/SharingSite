@@ -247,3 +247,11 @@ ul>div>a{
   color: black;
 }
 
+/* for practical page */
+.prac>div{
+  background-color: white; 
+  height: 100px; 
+  padding-top: 25px;
+  box-shadow: 4px 6px 3px rgb(71, 73, 74);
+  margin-top: 15px;
+}
