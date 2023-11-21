@@ -34,18 +34,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// For the 2nd page
 document.addEventListener('DOMContentLoaded', function(){
     const clickDiv1 = document.getElementById('ass1');
     const clickDiv2 = document.getElementById('ass2');
     const clickDiv3 = document.getElementById('ass3');
 
     clickDiv1.addEventListener('click',function(){
-        window.location = 'Java/ass1.html';
+        var ele = clickDiv1.querySelector('a');
+        window.location = ele.getAttribute("href");
     })
     clickDiv2.addEventListener('click',function(){
-        window.location = 'Java/ass1.html';
+        var ele = clickDiv2.querySelector('a');
+        window.location = ele.getAttribute("href");
     })
     clickDiv3.addEventListener('click',function(){
-        window.location.href = 'https://www.notion.so/Assignment-3-2c2070621f07467e80987be577283804?pvs=4';
+        var ele = clickDiv3.querySelector('a');
+        window.location = ele.getAttribute("href");
     })
 })

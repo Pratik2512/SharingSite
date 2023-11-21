@@ -239,7 +239,7 @@ ul>div{
   /* border: solid 1px black; */
   width: 50vh;
   box-shadow: 2px 4px 1px lightblue;
-
+  cursor: pointer;
   display: flex;
   justify-content: center;
 }
