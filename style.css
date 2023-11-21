@@ -162,6 +162,7 @@ h1{
     color: #000;
     position: relative;
     text-decoration: none;
+    cursor: pointer;
   }
   
   .col::before {

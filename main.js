@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clickableDiv1 = document.getElementById('col1');
     const clickableDiv2 = document.getElementById('col2');
     const clickableDiv3 = document.getElementById('col3');
+    const clickableDiv4 = document.getElementById('col4');
 
     clickableDiv1.addEventListener('click', function() {
         // Redirect to the desired URL
@@ -26,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     clickableDiv3.addEventListener('click', function() {
         // Redirect to the desired URL
         window.location = 'r.html';
+    });
+    clickableDiv4.addEventListener('click', function() {
+        // Redirect to the desired URL
+        window.location = 'practical.html';
     });
 });
 
