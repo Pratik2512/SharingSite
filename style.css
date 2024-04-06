@@ -108,7 +108,7 @@ h1{
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
   display: inline-block;
-      font-size: 80px;
+      font-size: 60px;
 }
 
 @keyframes textclip {
@@ -118,9 +118,12 @@ h1{
 }
 
 .main{
-    width: 60%;
-    margin: auto;
+    width: 80%;
+    justify-content: center;
     /* padding: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -163,6 +166,8 @@ h1{
     position: relative;
     text-decoration: none;
     cursor: pointer;
+    width: 500px;
+    
   }
   
   .col::before {
@@ -228,6 +233,8 @@ h1{
 
 .up>img{
   display: inline;
+  height: 100px;
+  
   transform: translate(200,30);
 }
 
