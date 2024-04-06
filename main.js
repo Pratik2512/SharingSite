@@ -10,27 +10,53 @@
 //     window.location='https://www.facebook.com';
 // });
 
+document.getElementById('col1').addEventListener('click', function() {
+    // Redirect to the desired URL
+    window.location.href = 'java.html';
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const clickableDiv1 = document.getElementById('col1');
     const clickableDiv2 = document.getElementById('col2');
     const clickableDiv3 = document.getElementById('col3');
     const clickableDiv4 = document.getElementById('col4');
+    //Sem 6
+    const clickableDiv5 = document.getElementById('col5');
+    const clickableDiv6 = document.getElementById('col6');
+    const clickableDiv7 = document.getElementById('col7');
+    const clickableDiv8 = document.getElementById('col8');
 
     clickableDiv1.addEventListener('click', function() {
         // Redirect to the desired URL
-        window.location = 'java.html';
+        window.location = './Sem5/java.html';
     });
     clickableDiv2.addEventListener('click', function() {
         // Redirect to the desired URL
-        window.location = 'os.html';
+        window.location = './Sem5/os.html';
     });
     clickableDiv3.addEventListener('click', function() {
         // Redirect to the desired URL
-        window.location = 'r.html';
+        window.location = './Sem5/r.html';
     });
     clickableDiv4.addEventListener('click', function() {
         // Redirect to the desired URL
-        window.location = 'practical.html';
+        window.location = './Sem5/practical.html';
+    });
+    
+    clickableDiv5.addEventListener('click', function(){
+        window.location = './Sem6/go.html'
+    });
+
+    clickableDiv6.addEventListener('click', function(){
+        window.location = './Sem6/android.html'
+    });
+
+    clickableDiv7.addEventListener('click', function(){
+        window.location = './Sem6/iot.html'
+    });
+
+    clickableDiv8.addEventListener('click', function(){
+        window.location = './Sem6/practical.html'
     });
 });
 
